@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "my-plugins",
+  "description": "Merlin Eck's directory of Claude Code plugins",
+  "owner": {
+    "name": "MMEnter"
+  },
+  "plugins": [
+    {
+      "name": "productivity",
+      "description": "Manage tasks, plan your day, and build up memory of important context about your work. Syncs with your calendar, email, and chat to keep everything organized and on track.",
+      "author": {
+        "name": "Anthropic"
+      },
+      "category": "productivity",
+      "source": "./plugins/productivity",
+      "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/productivity"
+    }
+  ]
+}
