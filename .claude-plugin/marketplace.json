@@ -15,6 +15,16 @@
       "category": "productivity",
       "source": "./plugins/productivity",
       "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/productivity"
+    },
+    {
+      "name": "exam-podcast",
+      "description": "Turn a certification exam guide PDF into a two-voice study podcast: a readable host/expert script where every wrong answer is explained as a common mistake, plus an audio-ready TTS package (dialogue JSON + multi-voice SSML).",
+      "author": {
+        "name": "MMEnter"
+      },
+      "category": "education",
+      "source": "./plugins/exam-podcast",
+      "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/exam-podcast"
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "name": "exam-podcast",
+  "version": "1.0.0",
+  "description": "Turn a certification exam guide PDF into a two-voice study podcast episode: a readable host/expert script where every wrong answer is explained as a common mistake, plus an audio-ready TTS package (speech-normalized master, dialogue JSON, multi-voice SSML).",
+  "author": {
+    "name": "MMEnter",
+    "url": "https://github.com/MMEnter"
+  },
+  "homepage": "https://github.com/MMEnter/my-plugins",
+  "keywords": [
+    "certification",
+    "exam",
+    "study",
+    "podcast",
+    "tts",
+    "audio"
+  ]
+}
