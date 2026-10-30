@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "my-plugins",
+  "name": "magical-plugin-marketplace",
   "description": "Merlin Eck's directory of Claude Code and Cowork plugins",
   "owner": {
     "name": "MMEnter"
@@ -14,7 +14,7 @@
       },
       "category": "education",
       "source": "./plugins/exam-podcast",
-      "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/exam-podcast"
+      "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/exam-podcast"
     },
     {
       "name": "claude-3p-watch",
@@ -25,7 +25,7 @@
       },
       "category": "productivity",
       "source": "./plugins/claude-3p-watch",
-      "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/claude-3p-watch"
+      "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/claude-3p-watch"
     }
   ]
 }

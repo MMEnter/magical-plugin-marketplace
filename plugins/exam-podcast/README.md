@@ -7,11 +7,11 @@ Give it an exam guide in the Claude Certification Program format and it produces
 ## Install
 
 ```
-/plugin marketplace add MMEnter/my-plugins
-/plugin install exam-podcast@my-plugins
+/plugin marketplace add MMEnter/magical-plugin-marketplace
+/plugin install exam-podcast@magical-plugin-marketplace
 ```
 
-(Or, from a local clone: `/plugin marketplace add /path/to/my-plugins`.)
+(Or, from a local clone: `/plugin marketplace add /path/to/magical-plugin-marketplace`.)
 
 ## Use
 
