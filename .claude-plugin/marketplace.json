@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "my-plugins",
-  "description": "Merlin Eck's directory of Claude Code plugins",
+  "description": "Merlin Eck's directory of Claude Code and Cowork plugins",
   "owner": {
     "name": "MMEnter"
   },
@@ -15,6 +15,17 @@
       "category": "education",
       "source": "./plugins/exam-podcast",
       "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/exam-podcast"
+    },
+    {
+      "name": "claude-3p-watch",
+      "description": "Tracks changes to Claude Desktop on third-party inference. Produces a weekly administrator brief from the release changelog and git-versioned documentation snapshots, then turns that brief into a short social post for LinkedIn or X.",
+      "version": "0.3.0",
+      "author": {
+        "name": "MMEnter"
+      },
+      "category": "productivity",
+      "source": "./plugins/claude-3p-watch",
+      "homepage": "https://github.com/MMEnter/my-plugins/tree/main/plugins/claude-3p-watch"
     }
   ]
 }
