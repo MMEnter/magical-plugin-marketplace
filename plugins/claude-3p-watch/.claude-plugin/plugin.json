@@ -2,6 +2,9 @@
   "name": "claude-3p-watch",
   "version": "0.3.0",
   "description": "Tracks changes to Claude Desktop on third-party inference. Produces a weekly administrator brief from the release changelog and git-versioned documentation snapshots, then turns that brief into a short social post. Reaches its workspace repository through the GitHub MCP connector, so it works from an ephemeral cloud session.",
+  "author": {
+    "name": "MMEnter"
+  },
   "keywords": [
     "claude-desktop",
     "third-party-inference",

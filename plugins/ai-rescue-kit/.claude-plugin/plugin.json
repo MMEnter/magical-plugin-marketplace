@@ -1,0 +1,9 @@
+{
+  "name": "ai-rescue-kit",
+  "version": "0.1.0",
+  "description": "Diagnose, prove, optimize and brief: the Partner Basecamp method for failing or expensive AI systems.",
+  "author": {
+    "name": "MMEnter"
+  },
+  "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/ai-rescue-kit"
+}

@@ -26,6 +26,17 @@
       "category": "productivity",
       "source": "./plugins/claude-3p-watch",
       "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/claude-3p-watch"
+    },
+    {
+      "name": "ai-rescue-kit",
+      "description": "Diagnose a failing or expensive AI system, prove the fix with an eval harness, cut cost and latency without losing accuracy, and write it up as a client brief. Includes a trace-analyst subagent and a hook that guards eval files from silent edits.",
+      "version": "0.1.0",
+      "author": {
+        "name": "MMEnter"
+      },
+      "category": "development",
+      "source": "./plugins/ai-rescue-kit",
+      "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/ai-rescue-kit"
     }
   ]
 }
