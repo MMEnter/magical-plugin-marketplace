@@ -1,4 +1,4 @@
-# claude-3p-watch
+# 3p-inference-watch
 
 Tracks changes to Claude Desktop on third-party inference — Amazon Bedrock, Microsoft Foundry,
 Google Cloud's Agent Platform, and self-hosted gateways — and turns them into two outputs: a

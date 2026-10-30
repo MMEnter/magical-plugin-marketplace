@@ -14,5 +14,6 @@
     "podcast",
     "tts",
     "audio"
-  ]
+  ],
+  "license": "MIT"
 }

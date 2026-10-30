@@ -5,5 +5,6 @@
   "author": {
     "name": "MMEnter"
   },
-  "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/ai-rescue-kit"
+  "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/ai-rescue-kit",
+  "license": "MIT"
 }

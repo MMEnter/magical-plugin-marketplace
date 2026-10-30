@@ -17,15 +17,15 @@
       "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/exam-podcast"
     },
     {
-      "name": "claude-3p-watch",
+      "name": "3p-inference-watch",
       "description": "Tracks changes to Claude Desktop on third-party inference. Produces a weekly administrator brief from the release changelog and git-versioned documentation snapshots, then turns that brief into a short social post for LinkedIn or X.",
       "version": "0.3.0",
       "author": {
         "name": "MMEnter"
       },
       "category": "productivity",
-      "source": "./plugins/claude-3p-watch",
-      "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/claude-3p-watch"
+      "source": "./plugins/3p-inference-watch",
+      "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/3p-inference-watch"
     },
     {
       "name": "ai-rescue-kit",
