@@ -2,7 +2,7 @@
 name: security-review-plugin
 description: Run a deeper security review of a Claude plugin through four blind lenses - supply chain, script security, confidentiality, and dependencies and licenses - against the SEC checklist, and report findings with patches. Use when the user asks for a security review, asks whether a plugin is safe to install or import, worries about hooks, scripts, MCP servers, secrets, leaked names or licenses, or before any plugin enters the marketplace. Not for style or house-rule reviews (review-plugin) or applying fixes (fix-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Security review of a plugin

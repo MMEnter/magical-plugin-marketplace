@@ -2,7 +2,7 @@
 name: review-plugin
 description: Review a Claude plugin against the house rulebook - mechanical checks plus a blind four-analyst panel (structure, skill quality, house patterns, docs and packaging) - and produce a report with ready-to-apply patches. Use when the user asks to review, check, lint, audit or grade a plugin, asks whether a plugin follows the house rules or is ready to publish, or gives a plugin folder or GitHub URL to look over. Not for security reviews (security-review-plugin), whole-marketplace sweeps (audit-marketplace) or applying fixes (fix-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Review a plugin

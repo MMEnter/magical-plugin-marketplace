@@ -1,6 +1,6 @@
 {
   "name": "plugin-toolkit",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Front gate for a Claude plugin marketplace: reviews, security-checks, builds, imports, fixes, eval-gates, stamps and releases plugins against one numbered house rulebook.",
   "author": {
     "name": "MMEnter"

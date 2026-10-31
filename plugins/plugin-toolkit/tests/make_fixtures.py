@@ -127,7 +127,7 @@ def make_stale_marketplace(dest: Path):
              "security_report": "sc-20261031-00000000", "open_criticals": 0,
              "eval_gate": {"result": "passed", "mode": "full", "tree_hash": st.tree_hash(p),
                            "finished_at": "2026-10-31T00:00:00Z"},
-             "waivers": [], "toolkit_version": "0.3.0", "stamped_at": "2026-10-31T00:00:00Z"}
+             "waivers": [], "toolkit_version": "1.0.0", "stamped_at": "2026-10-31T00:00:00Z"}
     w(p / ".toolkit" / "stamp.json", json.dumps(stamp, indent=2))
     # edit after review: the stamp is now stale
     with (p / "skills" / "tidy-notes" / "SKILL.md").open("a", encoding="utf-8") as fh:

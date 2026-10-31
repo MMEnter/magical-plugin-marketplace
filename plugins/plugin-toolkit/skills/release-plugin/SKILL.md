@@ -2,7 +2,7 @@
 name: release-plugin
 description: Release a reviewed plugin into the marketplace - bump the version everywhere it appears, write the marketplace entry, run the eval gate, write the review stamp, and open the pull request the plugin-gate check verifies. Blocks on open critical findings or a failing eval gate. Use when the user says release, ship, publish, bump the version, or add a reviewed or imported plugin to the marketplace. The only skill that edits marketplace.json. Not for reviews (review-plugin) or fixes (fix-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Release a plugin

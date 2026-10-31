@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
   "plugin": "plugin-toolkit",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "origin": "native",
-  "tree_hash": "sha256:9003cacfb45f8db8b8c42b7a984112caedb763a867f595b1bc308cdaea5fdb3b",
+  "tree_hash": "sha256:460b4ad9b26883bbb20b4fbee5e2163025b3d861eb698a7b3dfaec59b70630fc",
   "upstream": null,
-  "review_report": "rv-20261031-8cceae2f",
-  "security_report": "sc-20261031-09e47dd7",
+  "review_report": "rv-20261031-546fef54",
+  "security_report": "sc-20261031-c2a4abe2",
   "open_criticals": 0,
   "eval_gate": {
     "result": "passed",
     "mode": "pr",
-    "tree_hash": "sha256:9003cacfb45f8db8b8c42b7a984112caedb763a867f595b1bc308cdaea5fdb3b",
-    "finished_at": "2026-10-31T12:14:14Z"
+    "tree_hash": "sha256:460b4ad9b26883bbb20b4fbee5e2163025b3d861eb698a7b3dfaec59b70630fc",
+    "finished_at": "2026-10-31T15:08:41Z"
   },
   "waivers": [],
-  "toolkit_version": "0.3.0",
-  "stamped_at": "2026-10-31T12:14:25Z"
+  "toolkit_version": "1.0.0",
+  "stamped_at": "2026-10-31T15:08:42Z"
 }

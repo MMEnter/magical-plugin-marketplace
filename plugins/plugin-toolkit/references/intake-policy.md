@@ -66,7 +66,7 @@ Lives in the plugin root of every import. The upstream LICENSE and NOTICE files 
 | License | MIT |
 | Storage | vendored · pinned |
 | Imported | 2026-10-31 |
-| Imported by | plugin-toolkit 0.3.0 |
+| Imported by | plugin-toolkit 1.0.0 |
 
 ## Changes from upstream
 

@@ -2,7 +2,7 @@
 name: audit-marketplace
 description: Audit a whole plugin marketplace repo - validate every plugin against the rulebook, reconcile plugins/ with marketplace.json, flag cross-plugin name collisions, and flag plugins with a missing or stale review stamp (edited after review, or merged around the gate). Use when the user asks to audit, health-check or sweep the marketplace, asks what is out of date or unreviewed, or wants to know if anything skipped the gate. Not for reviewing one plugin in depth (review-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Audit the marketplace

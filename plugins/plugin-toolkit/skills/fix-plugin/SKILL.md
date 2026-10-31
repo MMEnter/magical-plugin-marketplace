@@ -2,7 +2,7 @@
 name: fix-plugin
 description: Apply the patches from a plugin-toolkit review or security report after the user approves them, then re-validate and show what is fixed, still open or newly broken. Use when the user says apply the fixes, fix the findings, apply patches F-003 and F-007, or accept the review's suggestions. Not for reviewing (review-plugin, security-review-plugin) or for edits the report didn't propose.
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Apply approved fixes

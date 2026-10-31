@@ -2,7 +2,7 @@
 name: build-plugin
 description: Build a new Claude plugin for the marketplace from the house templates - plugin.json, README, LICENSE, skills, agents and an eval suite - then review it and hand it to release-plugin. Use when the user wants to create, scaffold, start or make a new plugin, skill pack or agent bundle for their marketplace. Not for importing an existing plugin, skill, zip or MCP server (import-plugin) or changing an existing plugin (review-plugin, fix-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Build a new plugin

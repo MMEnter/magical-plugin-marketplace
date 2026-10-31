@@ -99,7 +99,7 @@ Every producer of findings uses this one JSON shape: `validate_plugin.py --json`
   "open_criticals": 0,
   "eval_gate": { "result": "passed | waived", "mode": "full", "tree_hash": "sha256:...", "finished_at": "..." },
   "waivers": ["HR-P01", "HR-E01"],
-  "toolkit_version": "0.3.0",
+  "toolkit_version": "1.0.0",
   "stamped_at": "2026-10-31T13:00:00Z"
 }
 ```

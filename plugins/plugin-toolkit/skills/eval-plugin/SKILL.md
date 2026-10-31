@@ -2,7 +2,7 @@
 name: eval-plugin
 description: Write, run and debug a plugin's `claude plugin eval` suite to the house eval standards - realistic cases, outcome graders, a negative case, eval-config.json - including tuning a skill description that isn't triggering. States the cost before any multi-case run. Use when the user asks to add or fix evals, test a plugin, check whether a skill fires, run the eval gate, or work out why a case fails. Not for reviewing the plugin itself (review-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Plugin evals

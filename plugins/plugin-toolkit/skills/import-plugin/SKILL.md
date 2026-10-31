@@ -2,7 +2,7 @@
 name: import-plugin
 description: Bring an outside plugin into the marketplace through quarantine - from a .zip, a GitHub repo, an Anthropic or other marketplace entry, a standalone skill folder or an MCP server config - with safety checks, both review panels, approved fixes, waivers, provenance and a vendored-or-pinned choice, then hand off to release-plugin. Use when the user wants to import, add, adopt, vendor or bring in a plugin, skill or MCP server they didn't build here, or uploads a plugin zip. Not for new builds (build-plugin).
 metadata:
-  version: "0.3.0"
+  version: "1.0.0"
 ---
 
 # Import a plugin
