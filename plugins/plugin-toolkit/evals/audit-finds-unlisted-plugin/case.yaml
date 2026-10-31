@@ -1,0 +1,31 @@
+schema_version: '1'
+name: audit-finds-unlisted-plugin
+description: 'plugin-toolkit eval: audit finds unlisted plugin'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: Audit this marketplace repo and tell me anything that's out of sync.
+  max_turns: 60
+  timeout_seconds: 1500
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: names-orphan
+  type: regex
+  target: last_message
+  pattern: orphan-notes
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?audit-marketplace"'
+- name: sync-ran
+  type: regex
+  target: trace
+  pattern: '"command"\s*:\s*"(?:[^"\\]|\\.)*sync_marketplace\.py'

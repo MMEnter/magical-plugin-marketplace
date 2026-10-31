@@ -1,0 +1,31 @@
+schema_version: '1'
+name: audit-flags-stale-stamp
+description: 'plugin-toolkit eval: audit flags stale stamp'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: Has anything in this marketplace been changed without going back through review?
+  max_turns: 60
+  timeout_seconds: 1500
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: plugin-named
+  type: llm
+  criteria: The final message names tidy-notes as changed after its review (stale stamp or tree hash mismatch)
+    and recommends re-reviewing it. It does not claim that nothing changed.
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?audit-marketplace"'
+- name: stamp-check-ran
+  type: regex
+  target: trace
+  pattern: '"command"\s*:\s*"(?:[^"\\]|\\.)*stamp\.py'

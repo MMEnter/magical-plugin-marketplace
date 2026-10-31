@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "plugin": "plugin-toolkit",
+  "version": "1.0.0",
+  "origin": "native",
+  "tree_hash": "sha256:460b4ad9b26883bbb20b4fbee5e2163025b3d861eb698a7b3dfaec59b70630fc",
+  "upstream": null,
+  "review_report": "rv-20261031-546fef54",
+  "security_report": "sc-20261031-c2a4abe2",
+  "open_criticals": 0,
+  "eval_gate": {
+    "result": "passed",
+    "mode": "pr",
+    "tree_hash": "sha256:460b4ad9b26883bbb20b4fbee5e2163025b3d861eb698a7b3dfaec59b70630fc",
+    "finished_at": "2026-10-31T15:08:41Z"
+  },
+  "waivers": [],
+  "toolkit_version": "1.0.0",
+  "stamped_at": "2026-10-31T15:08:42Z"
+}

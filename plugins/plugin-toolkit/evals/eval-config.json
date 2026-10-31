@@ -1,0 +1,16 @@
+{
+  "threshold": 0.75,
+  "runs_full": 3,
+  "smoke_cases": [
+    "import-rejects-unsafe-zip",
+    "explains-concepts-without-skills"
+  ],
+  "judge_model": "sonnet",
+  "allow_tools": [
+    "Bash",
+    "Write",
+    "Edit"
+  ],
+  "scaffold": true,
+  "max_cost_usd": 40
+}

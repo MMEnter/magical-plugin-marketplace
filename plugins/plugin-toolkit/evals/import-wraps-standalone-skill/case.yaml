@@ -1,0 +1,38 @@
+schema_version: '1'
+name: import-wraps-standalone-skill
+description: 'plugin-toolkit eval: import wraps standalone skill'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: There's a standalone skill in incoming/meeting-minutes. Bring it into the marketplace as its
+    own plugin. For now just get it through intake and the mechanical checks and show me what you'd waive;
+    don't run the review panels or release it.
+  max_turns: 60
+  timeout_seconds: 1200
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: plugin-json-generated
+  type: file_exists
+  path: '**/meeting-minutes/.claude-plugin/plugin.json'
+  exists: true
+- name: provenance-written
+  type: file_exists
+  path: '**/meeting-minutes/PROVENANCE.md'
+  exists: true
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?import-plugin"'
+- name: validator-clean
+  type: llm
+  criteria: The final message says the wrapped meeting-minutes plugin has no open critical findings from
+    the mechanical checks, and lists any remaining findings as waivable (for example HR-E01 or HR-S03)
+    rather than calling them blockers.

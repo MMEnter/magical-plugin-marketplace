@@ -1,0 +1,14 @@
+# Eval run output (HR-E06)
+plugins/*/evals/results/
+evals/results/
+
+# Import quarantine and toolkit scratch
+.toolkit-quarantine/
+.toolkit-work/
+
+# Build junk (HR-C06)
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+.env

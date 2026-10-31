@@ -1,0 +1,33 @@
+schema_version: '1'
+name: fix-applies-approved-patch
+description: 'plugin-toolkit eval: fix applies approved patch'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: The review in .toolkit-work/tidy-notes-review/review looks right. I approve F-001, apply it.
+  max_turns: 40
+  timeout_seconds: 900
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: metadata-added
+  type: regex
+  target:
+    source: file
+    path: plugins/tidy-notes/skills/tidy-notes/SKILL.md
+  pattern: metadata:\s*\n\s+version:\s*"0\.1\.0"
+- name: revalidated
+  type: regex
+  target: trace
+  pattern: '"command"\s*:\s*"(?:[^"\\]|\\.)*validate_plugin\.py'
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?fix-plugin"'

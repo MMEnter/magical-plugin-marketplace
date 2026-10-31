@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "normalize": "lowercase word tokens; phrases of up to 3 tokens joined by single spaces",
+  "terms": [
+    {
+      "sha256": "a0c45a5357c9fb361f6fd95c8affaad872aed2ff5d520ac48d53d7e25af278e5",
+      "label": "denied-term-1"
+    }
+  ]
+}
