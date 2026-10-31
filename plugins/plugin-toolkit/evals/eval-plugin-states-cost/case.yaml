@@ -1,0 +1,32 @@
+schema_version: '1'
+name: eval-plugin-states-cost
+description: 'plugin-toolkit eval: eval plugin states cost'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: How many runs would a full eval of plugins/tidy-notes take? Don't actually run anything, I just
+    want the cost picture.
+  max_turns: 20
+  timeout_seconds: 600
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: count
+  type: llm
+  criteria: The final message states that a full run is 12 agent runs (2 cases x 3 runs x 2 arms, with
+    and without the plugin) and that each run is billed. It says nothing was run.
+- name: dry-run
+  type: regex
+  target: trace
+  pattern: '"command"\s*:\s*"(?:[^"\\]|\\.)*eval_gate\.py(?:[^"\\]|\\.)*--dry-run'
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?eval-plugin"'

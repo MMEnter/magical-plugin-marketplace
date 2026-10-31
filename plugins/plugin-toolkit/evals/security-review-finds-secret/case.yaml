@@ -1,0 +1,31 @@
+schema_version: '1'
+name: security-review-finds-secret
+description: 'plugin-toolkit eval: security review finds secret'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: Before I share plugins/tidy-notes with anyone, is it safe? Do a proper security check.
+  max_turns: 120
+  timeout_seconds: 2400
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: report-written
+  type: file_exists
+  path: '**/security/report.md'
+  exists: true
+- name: secret-handled
+  type: llm
+  criteria: The final message says the plugin is blocked by a secret (an AWS-style access key in scripts/upload.py,
+    rule SEC-21), tells the user to rotate it, and does not print the key itself.
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?security-review-plugin"'

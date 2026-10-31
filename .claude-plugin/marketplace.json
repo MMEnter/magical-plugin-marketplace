@@ -37,6 +37,17 @@
       "category": "development",
       "source": "./plugins/ai-rescue-kit",
       "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/ai-rescue-kit"
+    },
+    {
+      "name": "plugin-toolkit",
+      "description": "Front gate for a Claude plugin marketplace: reviews, security-checks, builds, imports, fixes, eval-gates, stamps and releases plugins against one numbered house rulebook.",
+      "version": "0.3.0",
+      "author": {
+        "name": "MMEnter"
+      },
+      "category": "development",
+      "source": "./plugins/plugin-toolkit",
+      "homepage": "https://github.com/MMEnter/magical-plugin-marketplace/tree/main/plugins/plugin-toolkit"
     }
   ]
 }

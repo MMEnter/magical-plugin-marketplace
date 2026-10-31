@@ -1,0 +1,119 @@
+# plugin-gate: the CI half of plugin-toolkit's front gate.
+#
+# Every pull request that changes a plugin, the marketplace list or the toolkit's
+# policy files must show that each changed plugin went through plugin-toolkit:
+# mechanically valid, in sync with marketplace.json, and carrying a review stamp whose
+# tree hash matches the files in the PR. Model-based reviews and evals are not run
+# here (they are billed and run locally); the stamp is the proof they ran.
+#
+# The checks run with the toolkit from the base branch, so a pull request cannot
+# weaken the rules that judge it. The very first PR (before the toolkit exists on
+# main) falls back to the toolkit in the PR and says so.
+
+name: plugin-gate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "plugins/**"
+      - ".claude-plugin/marketplace.json"
+      - ".toolkit/**"
+      - ".github/workflows/plugin-gate.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plugin-gate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  plugin-gate:
+    name: plugin-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check out the base branch toolkit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: .gate-base
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: python -m pip install --disable-pip-version-check "pyyaml==6.0.2"
+
+      - name: Choose the toolkit and list changed plugins
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ -f .gate-base/plugins/plugin-toolkit/scripts/validate_plugin.py ]; then
+            echo "TOOLKIT=$PWD/.gate-base/plugins/plugin-toolkit" >> "$GITHUB_ENV"
+            echo "Using the toolkit from the base branch."
+          else
+            echo "TOOLKIT=$PWD/plugins/plugin-toolkit" >> "$GITHUB_ENV"
+            echo "::warning::plugin-toolkit is not on the base branch yet; bootstrapping with the toolkit in this PR."
+          fi
+          python - <<'PY' > changed.txt
+          import json, os, subprocess
+          base = os.environ["BASE_SHA"]
+          files = subprocess.run(["git", "diff", "--name-only", f"{base}...HEAD"], capture_output=True,
+                                 text=True, check=True).stdout.split()
+          names = {f.split("/")[1] for f in files if f.startswith("plugins/") and f.count("/") >= 2}
+          def entries(ref):
+              r = subprocess.run(["git", "show", f"{ref}:.claude-plugin/marketplace.json"], capture_output=True, text=True)
+              return {p.get("name"): p for p in json.loads(r.stdout).get("plugins", [])} if r.returncode == 0 else {}
+          old, new = entries(base), entries("HEAD")
+          names |= {n for n in set(old) | set(new) if old.get(n) != new.get(n) and n in new}
+          print("\n".join(sorted(n for n in names if n)))
+          PY
+          git diff --name-only "$BASE_SHA...HEAD" --diff-filter=d > changed-files.txt
+          echo "Changed plugins:"; cat changed.txt
+          echo "names=$(tr '\n' ' ' < changed.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Validate changed plugins (fails on any critical finding)
+        if: steps.scope.outputs.names != ''
+        run: |
+          status=0
+          for name in ${{ steps.scope.outputs.names }}; do
+            if [ -d "plugins/$name" ]; then
+              echo "::group::validate $name"
+              python -I "$TOOLKIT/scripts/validate_plugin.py" "plugins/$name" --marketplace . --no-cli || status=1
+              echo "::endgroup::"
+            fi
+          done
+          exit $status
+
+      - name: Marketplace sync for changed plugins
+        if: steps.scope.outputs.names != ''
+        run: python -I "$TOOLKIT/scripts/sync_marketplace.py" . --only ${{ steps.scope.outputs.names }}
+
+      - name: Verify review stamps and pinned SHAs
+        if: steps.scope.outputs.names != ''
+        run: python -I "$TOOLKIT/scripts/stamp.py" verify-repo . --changed ${{ steps.scope.outputs.names }}
+
+      - name: Secret and denylist scan of changed files
+        run: |
+          # Use the base branch's denylist so a PR can't drop a term and pass in the same change.
+          DENY=.gate-base/.toolkit/denylist.json
+          [ -f "$DENY" ] || DENY=.toolkit/denylist.json
+          if [ -s changed-files.txt ]; then
+            xargs -d '\n' python -I "$TOOLKIT/scripts/validate_plugin.py" --denylist "$DENY" --scan-files < changed-files.txt
+          fi
+
+      - name: Toolkit unit tests (when the toolkit changes)
+        if: contains(steps.scope.outputs.names, 'plugin-toolkit')
+        run: python -I -m unittest discover -s plugins/plugin-toolkit/tests -v

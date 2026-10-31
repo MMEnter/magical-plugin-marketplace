@@ -1,0 +1,35 @@
+schema_version: '1'
+name: review-runs-mechanical-checks
+description: 'plugin-toolkit eval: review runs mechanical checks'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: Can you review plugins/tidy-notes against our house rules and give me the report?
+  max_turns: 120
+  timeout_seconds: 2400
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: report-written
+  type: file_exists
+  path: '**/review/report.md'
+  exists: true
+- name: reports-counts
+  type: llm
+  criteria: The final message gives the number of open findings by severity (critical, major, minor) for
+    tidy-notes and says whether release is blocked.
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?review-plugin"'
+- name: validator-ran
+  type: regex
+  target: trace
+  pattern: '"command"\s*:\s*"(?:[^"\\]|\\.)*(?:package_plugin|validate_plugin)\.py'

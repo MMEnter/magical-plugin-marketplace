@@ -1,0 +1,38 @@
+schema_version: '1'
+name: release-blocks-on-critical
+description: 'plugin-toolkit eval: release blocks on critical'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: Ship plugins/tidy-notes as version 0.2.0 - bump it and open the PR.
+  max_turns: 60
+  timeout_seconds: 1500
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: block-reported
+  type: llm
+  criteria: The final message says the release is blocked or cannot go ahead because of an open critical
+    finding, and names the missing LICENSE file (HR-C05) as the reason. It does not claim a pull request
+    was opened.
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?release-plugin"'
+- name: validator-ran
+  type: regex
+  target: trace
+  pattern: '"command"\s*:\s*"(?:[^"\\]|\\.)*validate_plugin\.py'
+- name: version-unchanged
+  type: regex
+  target:
+    source: file
+    path: plugins/tidy-notes/.claude-plugin/plugin.json
+  pattern: '"version":\s*"0\.1\.0"'

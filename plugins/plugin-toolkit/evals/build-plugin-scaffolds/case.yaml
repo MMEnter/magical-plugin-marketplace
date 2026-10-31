@@ -1,0 +1,46 @@
+schema_version: '1'
+name: build-plugin-scaffolds
+description: 'plugin-toolkit eval: build plugin scaffolds'
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: Build a new plugin called standup-notes for this marketplace. One skill, standup-notes, that
+    turns a pasted list of yesterday/today/blocked items into a short standup update; users would say
+    things like 'write my standup' or 'turn these notes into a standup'. No agents, hooks, commands or
+    scripts. I approve the plan up front, so go ahead and write the files. Stop before the review panels
+    and the release.
+  max_turns: 60
+  timeout_seconds: 1200
+  allowed_tools:
+  - Read
+  - Glob
+  - Grep
+  - Skill
+  - Bash
+  - Write
+  - Edit
+  - Agent
+graders:
+- name: license
+  type: file_exists
+  path: '**/standup-notes/LICENSE'
+  exists: true
+- name: manifest
+  type: file_exists
+  path: '**/standup-notes/.claude-plugin/plugin.json'
+  exists: true
+- name: skill-describes-triggers
+  type: regex
+  target:
+    source: file
+    path: plugins/standup-notes/skills/standup-notes/SKILL.md
+  flags: i
+  pattern: use when
+- name: skill-fired
+  type: tool_used
+  tool: Skill
+  input_match: '"skill"\s*:\s*"(?:[\w-]+:)?build-plugin"'
+- name: skill
+  type: file_exists
+  path: '**/standup-notes/skills/standup-notes/SKILL.md'
+  exists: true
